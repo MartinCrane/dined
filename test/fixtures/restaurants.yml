@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  rating: 1.5
+  price: 1
+  yelp_id: MyString
+  latitude: 1.5
+  longitude: 1.5
+  image_url: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+  zip_code: 1
+
+two:
+  name: MyString
+  rating: 1.5
+  price: 1
+  yelp_id: MyString
+  latitude: 1.5
+  longitude: 1.5
+  image_url: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+  zip_code: 1
