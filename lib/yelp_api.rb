@@ -1,6 +1,7 @@
 require "json"
 require "http"
 require "optparse"
+require "byebug"
 
 module YelpAPI
     # Place holders for Yelp Fusion's OAuth 2.0 credentials. Grab them
@@ -50,7 +51,6 @@ module YelpAPI
 
       response = HTTP.post(url, params: params)
       parsed = response.parse
-
       "#{parsed['token_type']} #{parsed['access_token']}"
     end
 
