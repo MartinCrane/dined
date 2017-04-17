@@ -4,4 +4,11 @@ class Restaurant < ApplicationRecord
 
   include YelpAPI
 
+
+  def self.find_by_zipcode(zip)
+      self.where(zip_code: zip)
+  end
+
+
+
 end

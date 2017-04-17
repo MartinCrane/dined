@@ -7,5 +7,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
+  get '/zip_view/:id', to: 'restaurants#zip_view' 
+
   root 'static#home'
 end
