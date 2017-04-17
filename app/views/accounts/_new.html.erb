@@ -1,0 +1,24 @@
+<%= form_for account do |f| %>
+<div class="container register">
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.label :email, id: 'label' %>
+      <%= f.email_field :email, id: 'input' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.label :password, id: 'label' %>
+      <%= f.password_field :password, id: 'input' %>
+    </div>
+    <div class="col-md-6">
+      <%= f.label :password_confirmation, "Confirm", id: 'label' %>
+      <%= f.password_field :password_confirmation, id: 'input' %>
+    </div>
+  </div>
+  <div class="col-md-12", id="move-submit">
+    <%= f.submit "Register", class: "submit" %>
+  </div>
+  <% end %>
+</div>
