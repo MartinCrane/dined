@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  get '/zip_view/:id', to: 'restaurants#zip_view' 
+  get '/zip_view/:id', to: 'restaurants#zip_view'
+  get '/price_view/:id', to: 'restaurants#price_view'
+  get '/rating_view/:id', to: 'restaurants#rating_view'
 
   root 'static#home'
 end
