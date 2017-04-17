@@ -1,6 +1,7 @@
 require "json"
 require "http"
 require "optparse"
+require "pry"
 
 module YelpAPI
     # Place holders for Yelp Fusion's OAuth 2.0 credentials. Grab them
@@ -20,7 +21,7 @@ module YelpAPI
     DEFAULT_BUSINESS_ID = "yelp-san-francisco"
     DEFAULT_TERM = "dinner"
     DEFAULT_LOCATION = "San Francisco, CA"
-    SEARCH_LIMIT = 5
+    SEARCH_LIMIT = 50
 
 
     # Make a request to the Fusion API token endpoint to get the access token.
@@ -47,7 +48,6 @@ module YelpAPI
         client_secret: CLIENT_SECRET,
         grant_type: GRANT_TYPE
       }
-
       response = HTTP.post(url, params: params)
       parsed = response.parse
 
