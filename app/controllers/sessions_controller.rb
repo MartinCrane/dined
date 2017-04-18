@@ -1,30 +1,23 @@
-class SessionsController < ApplicationController
+require 'byebug'
 
-  def new
-    @account=Account.new
-  end
+class SessionsController < ApplicationController
+  skip_before_action :authenticate
 
   def create
-    account = Account.find_by(email: login_params[:email])
-    if account && account.authenticate(login_params[:password])
-      session[:account_id]=account.id
-      redirect_to root_path
+    account = Account.authenticate(account_params[:email], account_params[:password])
+    if account
+      payload = {account_id: account.id}
+      token = Auth.issue(payload)
+      render json: {jwt: token}
     else
-      flash[:error]="Something went wrong"
-      redirect_to root_path
+      render json: {error: "Bad email or password"}, status: 401
     end
-    respond_to :html, :js
-  end
-
-  def destroy
-    reset_session
-    redirect_to "/"
   end
 
   private
 
-  def login_params
-    params.require(:account).permit(:email, :password)
+  def account_params
+    params.require(:session).permit(:email, :password)
   end
 
 end

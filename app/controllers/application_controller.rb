@@ -1,23 +1,18 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
-  before_action :set_accounts
+  include ActionController::HttpAuthentication::Token::ControllerMethods
+  before_action :authenticate
 
-  def logged_in?
-    !!session[:account_id]
+  def authenticate
+    render json: {error: "Unauthorized"}, status: 401 unless logged_in?
   end
 
-  def current_user
-    Account.find(session[:account_id]) if logged_in?
-  end
-
-  def require_login
-    unless logged_in?
-      redirect_to root_path
-    end
-  end
-
-  def set_accounts
-    @accounts = Account.all
-  end
-
+ def logged_in?
+   authenticate_or_request_with_http_token do |token, options|
+     begin
+     Account.from_token(token)
+     rescue JWT::DecodeError
+       false
+     end
+   end
+ end
 end
