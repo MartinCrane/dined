@@ -9,4 +9,9 @@ class Restaurant < ApplicationRecord
       self.where(zip_code: zip)
   end
 
+
+  def self.find_by_price(price)
+    self.where(price: price)
+  end
+
 end

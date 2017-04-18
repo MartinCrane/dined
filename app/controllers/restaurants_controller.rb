@@ -11,4 +11,16 @@ class RestaurantsController < ApplicationController
     render json: restaurant, each_serializer: RestaurantApiSerializer
   end
 
+  def price_view
+    id = params[:id].to_i
+    restaurant = Restaurant.find_by_price(id)
+    render json: restaurant, each_serializer: RestaurantApiSerializer
+  end
+
+  def rating_view
+    id = params[:id].to_i
+    restaurant = Restaurant.find_by_zipcode(id).order(rating: :desc)
+    render json: restaurant, each_serializer: RestaurantApiSerializer
+  end
+
 end
