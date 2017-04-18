@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   resources :restaurants
   resources :accounts, only: [:create]
   resources :cocktails, only: [:index, :show]

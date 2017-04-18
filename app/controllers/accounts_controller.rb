@@ -1,9 +1,6 @@
 class AccountsController < ApplicationController
-  skip_before_action :authenticate
 
-  # def new
-  #   @account=Account.new
-  # end
+  skip_before_action :authenticate
 
   def create
     account = Account.new(account_params)
@@ -15,16 +12,7 @@ class AccountsController < ApplicationController
       render json: {errors: account.errors}, status: 401
     end
   end
-  # def create
-  #   account = Account.new(account_params)
-  #   if account.valid?
-  #     account.save
-  #     redirect_to root_path
-  #   else
-  #     flash[:error]="Something went wrong"
-  #     redirect_to root_path
-  #   end
-  # end
+
 
   private
 

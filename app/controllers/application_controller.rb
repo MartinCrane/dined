@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate
   include ActionController::HttpAuthentication::Token::ControllerMethods
+  before_action :authenticate
 
   def authenticate
     render json: {error: "Unauthorized"}, status: 401 unless logged_in?
@@ -15,23 +15,4 @@ class ApplicationController < ActionController::Base
      end
    end
  end
-  #
-  # def logged_in?
-  #   !!session[:account_id]
-  # end
-  #
-  # def current_user
-  #   Account.find(session[:account_id]) if logged_in?
-  # end
-  #
-  # def require_login
-  #   unless logged_in?
-  #     redirect_to root_path
-  #   end
-  # end
-  #
-  # def set_accounts
-  #   @accounts = Account.all
-  # end
-
 end
