@@ -1,3 +1,4 @@
+require 'byebug'
 class RestaurantsController < ApplicationController
 
   def show
@@ -8,6 +9,7 @@ class RestaurantsController < ApplicationController
   def zip_view
     id = params[:id].to_i
     restaurant = Restaurant.find_by_zipcode(id)
+
     render json: restaurant, each_serializer: RestaurantApiSerializer
   end
 
