@@ -9,6 +9,4 @@ class Restaurant < ApplicationRecord
       self.where(zip_code: zip)
   end
 
-
-
 end
