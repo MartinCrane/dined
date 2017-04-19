@@ -32,7 +32,6 @@ class ApplicationController < ActionController::Base
         end
       end
     end
-    byebug
     !!@current_account
   end
   #
