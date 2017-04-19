@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     current_account
-    !!Account.find(Auth.decode(token)['account_id'])
+    !!@current_account
   end
 
   def current_account
@@ -35,8 +35,8 @@ class ApplicationController < ActionController::Base
   end
 
   def auth_present?
-      !!request.headers['Authorization']
-    end
+    !!request.headers['Authorization']
+  end
 
 
 end

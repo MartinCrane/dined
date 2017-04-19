@@ -1,3 +1,4 @@
+require 'byebug'
 class AccountsController < ApplicationController
 
   skip_before_action :authenticate
@@ -7,6 +8,7 @@ class AccountsController < ApplicationController
     if account.save
       payload = {account_id: account.id}
       token = Auth.issue(payload)
+      byebug
       render json: {jwt: token}
     else
       render json: {errors: account.errors}, status: 401
