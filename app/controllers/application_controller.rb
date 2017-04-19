@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def restoreAccount
     if logged_in?
-      render json: {logged_in: "true", email: @current_account.email, favorites: @current_account.favorites}, status: 200
+      render json: {logged_in: "true", email: @current_account.email, favorites: @current_account.restaurants}, status: 200
     else
       render json: {logged_in: "false"}, status: 401
     end
