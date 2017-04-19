@@ -9,5 +9,8 @@ Rails.application.routes.draw do
   post '/price_view/:id', to: 'restaurants#price_view'
   post '/rating_view/:id', to: 'restaurants#rating_view'
   post '/ping', to: 'application#ping'
+  post '/favorites_add', to: 'favorites#add_favorites'
+  post '/favorites_send', to: 'favorites#retrieve_favorites'
+
   root 'static#home'
 end
