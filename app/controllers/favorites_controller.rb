@@ -2,11 +2,14 @@ require 'byebug'
 class FavoritesController < ApplicationController
 
   def add_favorites
-    account_id = 0
+    account_id = @current_account
     restaurant_id = 0
-    Favorites.create
-  end
 
+    account = Account.find_by_id(account_id)
+    restaurant = Restaurant.find_by_id(restaurant_id)
+    account.restaurants << restaurant
+
+  end
 
 
 
