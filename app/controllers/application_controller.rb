@@ -18,20 +18,22 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
-
   def logged_in?
     current_account
-    !!@current_account
   end
 
   def current_account
     if auth_present?
-      account = Account.find(Auth.decode(token)['account_id'])
-      if account
-        @current_account = account
+      response =  Auth.decode(token)
+      if response
+        account = Account.find(Auth.decode(token)['account_id'])
+        if account
+          @current_account = account
+        end
       end
     end
+    byebug
+    !!@current_account
   end
   #
   private

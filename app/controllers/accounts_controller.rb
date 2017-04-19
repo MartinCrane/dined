@@ -8,8 +8,7 @@ class AccountsController < ApplicationController
     if account.save
       payload = {account_id: account.id}
       token = Auth.issue(payload)
-      byebug
-      render json: {jwt: token}
+      render json: {jwt: token, email: account.email}
     else
       render json: {errors: account.errors}, status: 401
     end
