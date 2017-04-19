@@ -10,9 +10,9 @@ class ApplicationController < ActionController::Base
     render json: {error: "Unauthorized"}, status: 401 unless logged_in?
   end
 
-  def ping
+  def restoreAccount
     if logged_in?
-      render json: {logged_in: "true"}, status: 200
+      render json: {logged_in: "true", email: @current_account.email, favorites: @current_account.favorites}, status: 200
     else
       render json: {logged_in: "false"}, status: 401
     end

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if account
       payload = {account_id: account.id}
       token = Auth.issue(payload)
-      render json: {jwt: token, email: account.email}
+      render json: {jwt: token, email: account.email, favorites: account.favorites}
     else
       render json: {error: "Bad email or password"}, status: 401
     end
