@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   post '/zip_view/:id', to: 'restaurants#zip_view'
   post '/price_view/:id', to: 'restaurants#price_view'
   post '/rating_view/:id', to: 'restaurants#rating_view'
-
+  post '/ping', to: 'application#ping'
   root 'static#home'
 end
