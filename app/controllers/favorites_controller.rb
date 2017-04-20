@@ -1,10 +1,13 @@
 require 'byebug'
+require 'json'
 class FavoritesController < ApplicationController
 
   def add_favorites
     account = @current_account
     restaurant_id = request.body.read
-    restaurant = Restaurant.find_by(yelp_id: restaurant_id)
+    rest = JSON.parse(restaurant_id)
+    rest.delete('distance')
+    restaurant = Restaurant.find_or_create_by(rest)
     account.restaurants << restaurant
   end
 
