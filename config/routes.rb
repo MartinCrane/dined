@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post '/rating_view/:id', to: 'restaurants#rating_view'
   post '/restoreAccount', to: 'accounts#restoreAccount'
   post '/add_favorites', to: 'favorites#add_favorites'
+  post '/delete_favorites', to: 'favorites#delete_favorites'
   post '/retrieve_favorites', to: 'favorites#retrieve_favorites'
 
   root 'static#home'
