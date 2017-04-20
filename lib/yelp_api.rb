@@ -93,6 +93,14 @@ module YelpAPI
       response.parse
     end
 
+    def customSearch(token)
+
+      url = "#{API_HOST}#{SEARCH_PATH}"
+      params = token
+
+      response = HTTP.auth(bearer_token).get(url, params: params)
+      response.parse
+    end
 
     # Look up a business by a given business id. Full documentation is online at:
     # https://www.yelp.com/developers/documentation/v3/business

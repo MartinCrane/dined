@@ -6,23 +6,24 @@ class RestaurantsController < ApplicationController
     render json: restaurant, serializer: RestaurantApiSerializer
   end
 
-  def zip_view
-    id = params[:id].to_i
-    restaurant = Restaurant.find_by_zipcode(id)
-
-    render json: restaurant, each_serializer: RestaurantApiSerializer
+  def yelpApiSearch
+    yelp_api = Restaurant.new
+    token = regex_parse(params[:id])
+    results = yelp_api.customSearch(token)
+    render json: results
   end
 
-  def price_view
-    id = params[:id].to_i
-    restaurant = Restaurant.find_by_price(id)
-    render json: restaurant, each_serializer: RestaurantApiSerializer
-  end
+  private
 
-  def rating_view
-    id = params[:id].to_i
-    restaurant = Restaurant.find_by_zipcode(id).order(rating: :desc)
-    render json: restaurant, each_serializer: RestaurantApiSerializer
+  def regex_parse(string)
+    string_array = string.split("@$@$@")
+    token = {}
+    ix = 0
+    while ix < string_array.length
+      token[string_array[ix]] = string_array[ix+1]
+      ix += 2
+    end
+    token
   end
 
 end

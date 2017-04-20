@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :cocktails, only: [:index, :show]
   resources :sessions, only: [:create]
 
-  post '/zip_view/:id', to: 'restaurants#zip_view'
+  get '/zip_view/:id', to: 'restaurants#zip_view'
+  get '/yelpApiSearch/:id', to: 'restaurants#yelpApiSearch'
   post '/price_view/:id', to: 'restaurants#price_view'
   post '/rating_view/:id', to: 'restaurants#rating_view'
   post '/restoreAccount', to: 'accounts#restoreAccount'
