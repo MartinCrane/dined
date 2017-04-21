@@ -2,6 +2,8 @@ class Restaurant < ApplicationRecord
   has_many :favorites
   has_many :accounts, through: :favorites
 
+  validates :yelp_id, uniqueness: true
+
   include YelpAPI
 
 

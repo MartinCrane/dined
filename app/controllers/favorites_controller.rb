@@ -7,7 +7,8 @@ class FavoritesController < ApplicationController
     restaurant_id = request.body.read
     rest = JSON.parse(restaurant_id)
     rest.delete('distance')
-    restaurant = Restaurant.find_or_create_by(rest)
+    restaurant = Restaurant.find_by(yelp_id: rest["yelp_id"])
+    restaurant ?  nil : restaurant = Restaurant.create(rest)
     account.restaurants << restaurant
   end
 
