@@ -1,7 +1,7 @@
 require "json"
 require "http"
 require "optparse"
-require "byebug"
+
 
 module YelpAPI
     # Place holders for Yelp Fusion's OAuth 2.0 credentials. Grab them
