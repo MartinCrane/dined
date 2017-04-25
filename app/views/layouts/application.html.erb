@@ -8,15 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <% if !!session[:account_id] %>
-    <%= "LOGGED IN" %>
-    <%= link_to "Logout", "/logout", method: :delete%>
-    <% end %>
-    <%= link_to "Register", controller: "accounts", action: "new"%>
-    <%= link_to "Login", controller: "sessions", action: "new"%>
-
-
+  
     <%= yield %>
   </body>
 </html>
