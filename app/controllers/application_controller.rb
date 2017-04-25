@@ -1,4 +1,4 @@
-require "byebug"
+
 require "auth"
 
 class ApplicationController < ActionController::Base

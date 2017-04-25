@@ -1,4 +1,4 @@
-require 'byebug'
+
 class RestaurantsController < ApplicationController
 
   def show
