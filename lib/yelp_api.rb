@@ -1,6 +1,6 @@
 require "json"
 require "http"
-require "optparse"
+
 
 
 module YelpAPI
@@ -24,17 +24,7 @@ module YelpAPI
     SEARCH_LIMIT = 50
 
 
-    # Make a request to the Fusion API token endpoint to get the access token.
-    #
-    # host - the API's host
-    # path - the oauth2 token path
-    #
-    # Examples
-    #
-    #   bearer_token
-    #   # => "Bearer some_fake_access_token"
-    #
-    # Returns your access token
+
     def bearer_token
       # Put the url together
       url = "#{API_HOST}#{TOKEN_PATH}"
@@ -78,53 +68,5 @@ module YelpAPI
       response.parse
     end
 
-    # options = {}
-    # OptionParser.new do |opts|
-    #   opts.banner = "Example usage: ruby sample.rb (search|lookup) [options]"
-    #
-    #   opts.on("-tTERM", "--term=TERM", "Search term (for search)") do |term|
-    #     options[:term] = term
-    #   end
-    #
-    #   opts.on("-lLOCATION", "--location=LOCATION", "Search location (for search)") do |location|
-    #     options[:location] = location
-    #   end
-    #
-    #   opts.on("-bBUSINESS_ID", "--business-id=BUSINESS_ID", "Business id (for lookup)") do |id|
-    #     options[:business_id] = id
-    #   end
-    #
-    #   opts.on("-h", "--help", "Prints this help") do
-    #     puts opts
-    #     exit
-    #   end
-    # end.parse!
-    #
-    # command = ARGV
-    #
-    # case command.first
-    # when "search"
-    #   term = options.fetch(:term, DEFAULT_TERM)
-    #   location = options.fetch(:location, DEFAULT_LOCATION)
-    #
-    #   raise "business_id is not a valid parameter for searching" if options.key?(:business_id)
-    #
-    #   response = search(term, location)
-    #
-    #   puts "Found #{response["total"]} businesses. Listing #{SEARCH_LIMIT}:"
-    #   response["businesses"].each {|biz| puts biz["name"]}
-    # when "lookup"
-    #   business_id = options.fetch(:id, DEFAULT_BUSINESS_ID)
-    #
-    #
-    #   raise "term is not a valid parameter for lookup" if options.key?(:term)
-    #   raise "location is not a valid parameter for lookup" if options.key?(:lookup)
-    #
-    #   response = business(business_id)
-    #
-    #   puts "Found business with id #{business_id}:"
-    #   puts JSON.pretty_generate(response)
-    # else
-    #   puts "Please specify a command: search or lookup"
-    # end
+
 end
